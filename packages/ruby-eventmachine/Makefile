@@ -2,18 +2,24 @@ include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 
-RUBY_PKG_LIBVER:=1.9
+RUBY_PKG_LIBVER:=2.2
 
 PKG_NAME:=ruby-eventmachine
+PKG_SHORT_NAME:=eventmachine
 PKG_RELEASE:=1
+PKG_LIBVER:=1.0.7
 PKG_REV:=master
-PKG_VERSION:=$(PKG_REV)
+PKG_VERSION:=$(PKG_LIBVER)
 
-PKG_SOURCE:=$(PKG_NAME).tar.gz
-PKG_SOURCE_URL:=git://github.com/awilliams/eventmachine.git
-PKG_SOURCE_VERSION:=$(PKG_REV)
-PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_PROTO:=git
+PKG_SOURCE:=v$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/eventmachine/eventmachine/archive/$(PKG_SOURCE)
+PKG_SOURCE_VERSION:=$(PKG_LIBVER)
+PKG_SOURCE_SUBDIR:=$(PKG_SHORT_NAME)-$(PKG_VERSION)
+
+PKG_BUILD_DEPENDS:=ruby/host
+PKG_INSTALL:=1
+PKG_BUILD_PARALLEL:=1
+PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -71,10 +77,10 @@ define Build/Compile
 endef
 
 define Package/ruby-eventmachine/install
-	$(INSTALL_DIR) $(1)/usr/lib/ruby/site_ruby/1.9/mips-linux
-	$(CP) $(PKG_BUILD_DIR)/lib/eventmachine.rb $(1)/usr/lib/ruby/site_ruby/1.9/
-	$(CP) $(PKG_BUILD_DIR)/lib/em $(1)/usr/lib/ruby/site_ruby/1.9/
-	$(CP) $(PKG_BUILD_DIR)/lib/*.so $(1)/usr/lib/ruby/site_ruby/1.9/mips-linux
+	$(INSTALL_DIR) $(1)/usr/lib/ruby/$(PKG_LIBVER)/mips-linux
+	$(CP) $(PKG_BUILD_DIR)/lib/eventmachine.rb $(1)/usr/lib/ruby/$(PKG_LIBVER)/
+	$(CP) $(PKG_BUILD_DIR)/lib/em $(1)/usr/lib/ruby/$(PKG_LIBVER)/
+	$(CP) $(PKG_BUILD_DIR)/lib/*.so $(1)/usr/lib/ruby/$(PKG_LIBVER)/mips-linux
 endef
 
 $(eval $(call BuildPackage,ruby-eventmachine))
