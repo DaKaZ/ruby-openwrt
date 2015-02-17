@@ -8,13 +8,14 @@ PKG_NAME:=ruby-eventmachine
 PKG_SHORT_NAME:=eventmachine
 PKG_RELEASE:=1
 PKG_LIBVER:=1.0.7
-PKG_REV:=master
+PKG_REV:=6dbdb97bada05d33a1f0d469a49d8c46ac2e77d0
 PKG_VERSION:=$(PKG_LIBVER)
 
-PKG_SOURCE:=v$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/eventmachine/eventmachine/archive/$(PKG_SOURCE)
-PKG_SOURCE_VERSION:=$(PKG_LIBVER)
-PKG_SOURCE_SUBDIR:=$(PKG_SHORT_NAME)-$(PKG_VERSION)
+PKG_SOURCE:=$(PKG_NAME).tar.gz
+PKG_SOURCE_URL:=git://github.com/eventmachine/eventmachine.git
+PKG_SOURCE_VERSION:=$(PKG_REV)
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_PROTO:=git
 
 PKG_BUILD_DEPENDS:=ruby/host
 PKG_INSTALL:=1
