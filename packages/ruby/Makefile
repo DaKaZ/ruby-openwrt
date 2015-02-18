@@ -829,6 +829,14 @@ MAKE_FLAGS += \
 	DESTDIR="$(PKG_INSTALL_DIR)" \
 	SHELL="/bin/bash"
 
+define Build/Prepare
+$(call Build/Prepare/Default)
+	( cd $(PKG_BUILD_DIR) ; \
+		autoconf ; \
+	)
+endef
+
+
 define Package/ruby/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_DIR) $(1)/usr/lib/ruby/$(PKG_LIBVER)
