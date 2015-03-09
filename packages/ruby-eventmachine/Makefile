@@ -28,19 +28,13 @@ define Package/ruby-eventmachine
   SUBMENU:=Ruby
   SECTION:=lang
   CATEGORY:=Languages
-  DEPENDS:=ruby +libstdcpp +libc +libgcc +libruby +ruby-socket
+  DEPENDS:=ruby +libstdcpp +libc +libgcc
   TITLE:=Ruby eventmachine gem
 endef
 
 RUBY:= \
 	$(STAGING_DIR_HOST)/bin/ruby -I $(STAGING_DIR_HOST)/share/ri \
 
-
-TARGET_LDFLAGS += -L$(PKG_BUILD_DIR)
-
-MAKE_FLAGS += \
-	DESTDIR="$(PKG_INSTALL_DIR)" \
-	SHELL="/bin/bash"
 
 define Package/ruby-eventmachine/description
  This package contains the ruby eventmachine gem.
