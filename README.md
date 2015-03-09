@@ -4,7 +4,10 @@ Ruby 2.2 Packages cloned from edge package feeds: https://github.com/openwrt/pac
 
 Ruby Event Machine inspired by https://github.com/awilliams/ruby-openwrt
 
-*OpenWrt is described as a Linux distribution for embedded devices. Instead of trying to create a single, static firmware, OpenWrt provides a fully writable filesystem with package management.* [-  OpenWrt](https://openwrt.org/)
+## Build Notes ##
 
-There are over [2000 packages](http://downloads.openwrt.org/backfire/10.03.1/brcm63xx/packages/) available for OpenWrt.
+If you are compiling / building using OS X, I had to do two things to get everything to build correctly.  First, I was
+running ruby 2.2.0 in my host system.  Seconarily, I had to disable ccache, you can do this when you build as such:
+
+`CCACHE_DISABLE=1 make V=s`
 
