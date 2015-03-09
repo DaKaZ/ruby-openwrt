@@ -1,5 +1,5 @@
 include $(TOPDIR)/rules.mk
-# include $(INCLUDE_DIR)/kernel.mk
+include $(INCLUDE_DIR)/kernel.mk
 
 
 RUBY_PKG_LIBVER:=2.2
@@ -22,9 +22,7 @@ PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
 PKG_FIXUP:=autoreconf
 
-include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/nls.mk
 
 define Package/ruby-eventmachine
   SUBMENU:=Ruby
@@ -43,13 +41,6 @@ TARGET_LDFLAGS += -L$(PKG_BUILD_DIR)
 MAKE_FLAGS += \
 	DESTDIR="$(PKG_INSTALL_DIR)" \
 	SHELL="/bin/bash"
-
-define Build/Prepare
-$(call Build/Prepare/Default)
-	( cd $(PKG_BUILD_DIR) ; \
-		autoconf ; \
-	)
-endef
 
 define Package/ruby-eventmachine/description
  This package contains the ruby eventmachine gem.
