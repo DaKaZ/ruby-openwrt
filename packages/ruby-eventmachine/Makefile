@@ -17,7 +17,7 @@ PKG_SOURCE_VERSION:=$(PKG_REV)
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_PROTO:=git
 
-PKG_BUILD_DEPENDS:=ruby/host
+PKG_BUILD_DEPENDS:=
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
 PKG_FIXUP:=autoreconf
@@ -28,7 +28,7 @@ define Package/ruby-eventmachine
   SUBMENU:=Ruby
   SECTION:=lang
   CATEGORY:=Languages
-  DEPENDS:=ruby +libstdcpp +libc +libgcc
+  DEPENDS:=+ruby-socket +libstdcpp +libc +libgcc
   TITLE:=Ruby eventmachine gem
 endef
 
