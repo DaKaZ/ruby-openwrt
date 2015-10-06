@@ -17,7 +17,7 @@ PKG_LIBVER:=2.2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=http://cache.ruby-lang.org/pub/ruby/$(PKG_LIBVER)/
-PKG_MD5SUM:=d03cd4690fec1fff81d096d1c1255fde
+PKG_MD5SUM:=f49a734729a71774d4a94a9a603114b2
 PKG_MAINTAINER:=Luiz Angelo Daros de Luca <luizluca@gmail.com>
 PKG_LICENSE:=BSD-2-Clause
 PKG_LICENSE_FILES:=COPYING
