@@ -1,0 +1,20 @@
+--- ffi-1.9.10.old/ext/ffi_c/Platform.c	2015-11-15 20:34:02.000000000 +0100
++++ ffi-1.9.10/ext/ffi_c/Platform.c	2015-11-16 00:05:54.214650589 +0100
+@@ -43,7 +43,7 @@
+ #include "rbffi_endian.h"
+ #include "Platform.h"
+ 
+-#if defined(__GNU__) || defined(__GLIBC__)
++#if (defined(__GNU__) || defined(__GLIBC__)) && !defined(__UCLIBC__)
+ # include <gnu/lib-names.h>
+ #endif
+ 
+@@ -113,7 +113,7 @@
+     rb_define_const(PlatformModule, "LITTLE_ENDIAN", INT2FIX(LITTLE_ENDIAN));
+     rb_define_const(PlatformModule, "BIG_ENDIAN", INT2FIX(BIG_ENDIAN));
+     rb_define_const(PlatformModule, "CPU", rb_str_new2(CPU));
+-#if defined(__GNU__) || defined(__GLIBC__)
++#if (defined(__GNU__) || defined(__GLIBC__)) && !defined(__UCLIBC__)
+     rb_define_const(PlatformModule, "GNU_LIBC", rb_str_new2(LIBC_SO));
+ #endif
+     export_primitive_types(PlatformModule);

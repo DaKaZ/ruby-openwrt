@@ -1,0 +1,11 @@
+--- ffi-1.9.10.old/ext/ffi_c/extconf.rb	2015-11-15 20:34:02.000000000 +0100
++++ ffi-1.9.10/ext/ffi_c/extconf.rb	2015-11-17 10:35:15.188999888 +0100
+@@ -42,7 +44,7 @@
+   create_makefile("ffi_c")
+   unless libffi_ok
+     File.open("Makefile", "a") do |mf|
+-      mf.puts "LIBFFI_HOST=--host=#{RbConfig::CONFIG['host_alias']}" if RbConfig::CONFIG.has_key?("host_alias")
++      mf.puts "LIBFFI_HOST=--host=${TARGET_CROSS}"
+       if RbConfig::CONFIG['host_os'].downcase =~ /darwin/
+         mf.puts "include ${srcdir}/libffi.darwin.mk"
+       elsif RbConfig::CONFIG['host_os'].downcase =~ /bsd/
