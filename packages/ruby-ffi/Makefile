@@ -33,9 +33,12 @@ define Package/ruby-ffi
   TITLE:=Ruby FFI gem
 endef
 
-RUBY:=$(STAGING_DIR_HOST)/bin/ruby --disable=gems \
+#RUBY:=$(STAGING_DIR_HOST)/bin/ruby --disable=gems \
 	-I$(BUILD_DIR)/$(RUBY_PKG_NAME)-$(RUBY_PKG_VERSION) \
 	-r$(ARCH)-linux-gnu-fake
+
+RUBY:= \
+	$(STAGING_DIR_HOST)/bin/ruby -I $(STAGING_DIR_HOST)/share/ri \
 
 define Package/ruby-ffi/description
  This package contains the ruby ffi gem.
