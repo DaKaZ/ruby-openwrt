@@ -55,10 +55,10 @@ define Build/Compile
 endef
 
 define Build/Install
-	$(INSTALL_DIR) $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/$(ARCH)-linux-gnu
+	$(INSTALL_DIR) $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/mips-linux
 	$(CP) $(PKG_BUILD_DIR)/lib/ffi.rb $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/
 	$(CP) $(PKG_BUILD_DIR)/lib/ffi $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/
-	$(CP) $(PKG_BUILD_DIR)/ext/ffi_c/ffi_c.so $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/$(ARCH)-linux-gnu/
+	$(CP) $(PKG_BUILD_DIR)/ext/ffi_c/ffi_c.so $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/mips-linux
 endef
 
 define Package/ruby-ffi/install
