@@ -32,7 +32,9 @@ define Package/ruby-ffi
   DEPENDS:=ruby +ruby-rbconfig +libffi
   TITLE:=Ruby FFI gem
 endef
-
+ifeq ($(ARCH),rlx)
+	ARCH:=mips
+endif
 RUBY:=$(STAGING_DIR_HOST)/bin/ruby --disable=gems \
 	-I$(BUILD_DIR)/$(RUBY_PKG_NAME)-$(RUBY_PKG_VERSION) \
 	-r$(ARCH)-linux-gnu-fake
