@@ -29,16 +29,13 @@ define Package/ruby-ffi
   SUBMENU:=Ruby
   SECTION:=lang
   CATEGORY:=Languages
-  DEPENDS:=ruby +libffi
+  DEPENDS:=ruby +ruby-rbconfig +libffi
   TITLE:=Ruby FFI gem
 endef
 
-#RUBY:=$(STAGING_DIR_HOST)/bin/ruby --disable=gems \
+RUBY:=$(STAGING_DIR_HOST)/bin/ruby --disable=gems \
 	-I$(BUILD_DIR)/$(RUBY_PKG_NAME)-$(RUBY_PKG_VERSION) \
 	-r$(ARCH)-linux-gnu-fake
-
-RUBY:= \
-	$(STAGING_DIR_HOST)/bin/ruby -I $(STAGING_DIR_HOST)/share/ri \
 
 define Package/ruby-ffi/description
  This package contains the ruby ffi gem.
@@ -55,10 +52,10 @@ define Build/Compile
 endef
 
 define Build/Install
-	$(INSTALL_DIR) $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/mips-linux-gnu
+	$(INSTALL_DIR) $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/$(ARCH)-linux-gnu
 	$(CP) $(PKG_BUILD_DIR)/lib/ffi.rb $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/
 	$(CP) $(PKG_BUILD_DIR)/lib/ffi $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/
-	$(CP) $(PKG_BUILD_DIR)/ext/ffi_c/ffi_c.so $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/mips-linux-gnu
+	$(CP) $(PKG_BUILD_DIR)/ext/ffi_c/ffi_c.so $(PKG_INSTALL_DIR)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/$(ARCH)-linux-gnu/
 endef
 
 define Package/ruby-ffi/install
