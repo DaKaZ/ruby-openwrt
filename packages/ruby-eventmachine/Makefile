@@ -85,4 +85,4 @@ define Package/ruby-eventmachine/install
 	$(CP) $(PKG_BUILD_DIR)/lib/*.so $(1)/usr/lib/ruby/$(RUBY_PKG_LIBVER)/mips-linux
 endef
 
-$(eval $(call BuildPackage,ruby-eventmachine))
+$(eval $(call BuildPackage,ruby-eventmachine,+libopenssl))
