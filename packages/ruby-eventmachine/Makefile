@@ -28,7 +28,7 @@ define Package/ruby-eventmachine
   SUBMENU:=Ruby
   SECTION:=lang
   CATEGORY:=Languages
-  DEPENDS:=+ruby-socket +libstdcpp +libc +libgcc
+  DEPENDS:=+ruby-socket +libstdcpp +libc +libgcc +libopenssl
   TITLE:=Ruby eventmachine gem
 endef
 
